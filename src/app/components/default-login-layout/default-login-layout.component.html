@@ -1,0 +1,17 @@
+<div class="flex h-screen">
+  <!-- Image Section -->
+  <div class="w-full bg-cover bg-center" style="background-image: url('/images/journal_login_bg.jpg');">
+
+    <!-- Right: Login Form -->
+    <div class="absolute right-0 top-0 w-2/5 h-full flex flex-col justify-center items-center px-12 bg-cream-500/70">
+      <!-- Logo -->
+      <img class="fixed top-5" src="images/logo.png" alt="Logo">
+
+      <div class="border rounded p-5 py-7 shadow-lg relative bg-white/80">
+        <!-- Title -->
+        <mat-label class="text-3xl font-bold mb-4">{{title}}</mat-label>
+        <ng-content></ng-content>
+      </div>
+    </div>
+  </div>
+</div>

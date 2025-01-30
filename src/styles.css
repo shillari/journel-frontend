@@ -1,1 +1,26 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Playpen+Sans:wght@100..800&family=Ubuntu+Sans:ital,wght@0,100..800;1,100..800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-caramel-500: oklch(65.07% 0.0938 59.01);
+  --color-cream-500: oklch(92.42% 0.0299 85.56);
+}
+
+.mdc-notched-outline__notch
+{
+  border-right: none;
+}
+
+.mat-mdc-text-field-wrapper {
+  background-color: white;
+}
+
+html, body { 
+  height: 100%; 
+}
+
+body { 
+  margin: 0; 
+  font-family: "Roboto", serif; 
+}
