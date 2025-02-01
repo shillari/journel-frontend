@@ -1,16 +1,16 @@
 import { Component, signal } from '@angular/core';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { JournelService } from '../../services/journel.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { DefaultLoginLayoutComponent } from '../../components/default-login-layout/default-login-layout.component';
 import { MatFormFieldModule, MatLabel } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBar } from '@angular/material/snack-bar';
-import { FormControl, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { JournelService } from '../../services/journel.service';
 import { NgIf } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-register',
   imports: [
     DefaultLoginLayoutComponent,
     MatFormFieldModule,
@@ -21,29 +21,31 @@ import { Router, RouterModule } from '@angular/router';
     NgIf,
     RouterModule
   ],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css'
 })
-export class LoginComponent {
-  loginForm!: FormGroup;
+export class RegisterComponent {
+  signupForm!: FormGroup
 
   constructor(
     public journelService: JournelService,
     public snackBar: MatSnackBar,
-    private router: Router
+    public router: Router
   ) {
-    this.loginForm = new FormGroup({
+    this.signupForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
+      username: new FormControl('', [Validators.required]),
       password: new FormControl('', [Validators.required, Validators.minLength(8)])
     });
   }
 
-  loginUser(): void {
-    if (this.loginForm.valid) {
-      this.journelService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
+  signupUser(): void {
+    if (this.signupForm.valid) {
+      this.journelService.register(this.signupForm.value.email, this.signupForm.value.username, this.signupForm.value.password).subscribe({
         next: result => {
           localStorage.setItem('journel.token', result.token);
           localStorage.setItem('journel.username', result.username);
+          this.router.navigate(['/login']);
         },
         error: err => {
           this.snackBar.open(err, 'error', {
@@ -51,8 +53,6 @@ export class LoginComponent {
           });
         }
       });
-
-      this.router.navigate(['/home']);
     }
   }
 

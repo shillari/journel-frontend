@@ -27,7 +27,27 @@ export class JournelService {
     return this.http.post(this.apiUrl + '/auth/authenticate', userDetails).pipe(
       tap((response: any) => localStorage.setItem('token', response.token)),
       catchError((err) => this.handleError(err))
-    )
+    );
+  }
+
+  /**
+   * Signup an user.
+   * 
+   * @param email 
+   * @param username 
+   * @param password 
+   * @returns the response from server API.
+   */
+  register(email: string, username: string, password: string): Observable<any> {
+    const userDetails = {
+      'email': email,
+      'username': username,
+      'password': password
+    }
+
+    return this.http.post(this.apiUrl + '/auth/register', userDetails).pipe(
+      catchError(err => this.handleError(err))
+    );
   }
 
   /**
@@ -63,7 +83,6 @@ export class JournelService {
         `Error body: ${error.error}`
       );
     }
-    return throwError(() => error
-    );
+    return throwError(() => error);
   }
 }

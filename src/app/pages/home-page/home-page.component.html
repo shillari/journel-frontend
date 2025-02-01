@@ -1,0 +1,8 @@
+<div *ngIf="userLoggedIn; else loggedOut" class="w-full h-full bg-cover bg-center"
+  style="background-image: url('/images/home-bg.png');">
+  <app-sidebar></app-sidebar>
+</div>
+
+<ng-template #loggedOut>
+  <p>NOT LOGGED</p>
+</ng-template>

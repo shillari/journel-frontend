@@ -1,0 +1,21 @@
+<mat-toolbar class="absolute bg-caramel-500 shadow-2xl z-100">
+  <div class="w-4/5">
+    <img class="relative w-full/20 h-10" src="images/logo.png" alt="Logo">
+  </div>
+
+  <div class="w-1/5 flex justify-end">
+    <input id="search" matInput type="text" formControlName="search"
+      class="search-bar h-7 border text-sm bg-cream-500 rounded pe-5" required>
+    <button class="px-2 mr-5" mat-icon-button matSuffix (click)="clickEvent($event)">
+      <mat-icon>search</mat-icon>
+    </button>
+
+
+    <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <mat-icon>sort</mat-icon>
+    </button>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>filter_alt</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

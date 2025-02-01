@@ -7,6 +7,19 @@
   --color-cream-500: oklch(92.42% 0.0299 85.56);
 }
 
+.mat-sidenav {
+  background-image: linear-gradient(to right, var(--color-caramel-500) , var(--color-cream-500));
+}
+
+.mat-toolbar {
+  background-color: var(--color-caramel-500) !important;
+  height: 45px !important;
+}
+
+.search-bar {
+  align-self: center !important;
+}
+
 .mdc-notched-outline__notch
 {
   border-right: none;
